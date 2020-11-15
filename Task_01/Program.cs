@@ -34,7 +34,7 @@ namespace Task_01
         static void Main()
         {
             CultureInfo.CurrentCulture = new CultureInfo("ru-RU");
-            double x;
+            double x = 0;
             x = double.Parse(Console.ReadLine());
             Console.WriteLine($"{Function(x):f2}");
             Console.ReadLine();
