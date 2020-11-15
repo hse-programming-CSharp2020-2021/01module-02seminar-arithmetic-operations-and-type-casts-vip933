@@ -1,42 +1,19 @@
-﻿/*
- * Задача : 
- * Получить от пользователя вещественное значение – бюджет пользователя и целое число – процент бюджета, 
- * выделенный на компьютерные игры. Вычислить и вывести на экран сумму в долларах, 
- * выделенную на компьютерные игры. С точностью до 2-х знаков после запятой. 
- * !!!Использовать спецификаторы формата для валют.!!!
- * 
- * Формат входных данных : 
- * -------test_1-------
- * 1300
- * 10
- * -------test_2-------
- * 1000.50
- * 5
- * --------------------
- * 
- * Формат выходных данных : 
- * -------test_1-------
- * $130.00
- * -------test_2-------
- * $50.03
- * --------------------
- */
-
 using System;
+using System.Globalization;
 
-namespace Task_06 {
-	class Program {
-		static void Main(string[] args) {
-			// TODO : Сменить локаль на "en-US" для вывода в долларах
-			double sum;
-			int percent;
-			// TODO : Считать вещественную и целочисленную переменную.
-
-			// TODO : Рассчитать бюджет на игры.
-			double onComputerGames = ;
-
-			// TODO : Вывести используя спецификаторы формата валюты результат. 
-			// (https://metanit.com/sharp/tutorial/7.5.php)
-		}
-	}
+namespace Task_06
+{
+    class Program
+    {
+        static void Main(string[] args)
+        { 
+            CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+            double sum;
+            int percent;
+            sum = double.Parse(Console.ReadLine());
+            percent = int.Parse(Console.ReadLine());
+            double onComputerGames = sum / 100 * percent;
+            Console.WriteLine(onComputerGames.ToString("C2", CultureInfo.CreateSpecificCulture("en-US")));
+        }
+    }
 }
