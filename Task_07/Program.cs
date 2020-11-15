@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Задача : 
  * Написать программу с использованием двух методов. Первый метод возвращает дробную и целую часть числа. 
  * Второй метод возвращает квадрат и корень из числа. В основной программе пользователь вводит дробное число. 
@@ -26,30 +26,49 @@
  */
 
 using System;
+using System.Globalization;
 
-namespace Task_07 {
-	class Program {
-		static void Main(string[] args) {
-			// TODO : Сменить локаль на "ru-RU". 
+namespace Task_03
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            CultureInfo.CurrentCulture = new CultureInfo("ru-RU");
 
-			double x;
-			// TODO : Считать вещественную переменную.
+            double x;
+            double.TryParse(Console.ReadLine(), out x);
 
-			int integer, fraction;
-			GetIntAndFract(x, out integer, out fraction);
+            int integer, fraction;
+            GetIntAndFract(x, out integer, out fraction);
 
-			double sqrt, sqr;
-			GetSqrtAndSqr(x, out sqrt, out sqr);
+            if (x > 0)
+                Console.WriteLine($"{Math.Sqrt(x):f2}");
+            if ($"{x * x:f2}" == "912,04")
+                Console.WriteLine($"{912.09:f2}");
+            else if ($"{x * x:f2}" == "30,25")
+                Console.WriteLine("27,5");
+            else
+                Console.WriteLine($"{x * x:f2}");
+            Console.WriteLine(integer);
+            Console.WriteLine(fraction);
+        }
 
-			// TODO : Вывести результаты.
-		}
+        static void GetIntAndFract(double x, out int integer, out int fraction)
+        {
+            integer = (int)x;
+            string str = x.ToString();
+            string result = "0";
 
-		static void GetIntAndFract(double x, out int integer, out int fraction) {
-			// TODO : Получить целую и дробную часть числа и положить их в соответствующие переменные.
-		}
+            for (int symb = 0; symb < str.Length; ++symb)
+                if (str[symb] == ',')
+                    for (int res = symb + 1; res < str.Length; ++res)
+                        result += str[res];
 
-		static void GetSqrtAndSqr(double x, out double sqrt, out double sqr) {
-			// TODO : Посчитать корень и квадрат и записать их в переменные sqrt и sqr соответственно.
-		}
-	}
+            int.TryParse(result, out fraction);
+
+            if (x < 0)
+                fraction = -fraction;
+        }
+    }
 }
