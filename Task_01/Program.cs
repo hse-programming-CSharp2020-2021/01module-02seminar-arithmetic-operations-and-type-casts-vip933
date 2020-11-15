@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Задача : 
  * Ввести значение x и вывести значение полинома: F(x) = 12x^4 + 9x^3 - 3x^2 + 2x – 4. 
  * С точностью до 2-х знаков после запятой. 
@@ -34,7 +34,7 @@ namespace Task_01
         static void Main()
         {
             CultureInfo.CurrentCulture = new CultureInfo("ru-RU");
-            double x = 0;
+            double x;
             x = double.Parse(Console.ReadLine());
             Console.WriteLine($"{Function(x):f2}");
             Console.ReadLine();
